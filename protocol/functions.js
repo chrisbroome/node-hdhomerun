@@ -97,6 +97,24 @@ function decode_pkt(pkt, msg) {
 			pos += tag_len;
 			msg.error_message = err_msg;
 			break;
+		case (tags.auth_bin.value):
+			var gs_name = pkt.toString('ascii', pos, pos +
+				tag_len - 1);
+			pos += tag_len;
+			msg.getset_name = gs_name;
+			break;
+		case (tags.auth_str.value):
+			var gs_name = pkt.toString('ascii', pos, pos +
+				tag_len - 1);
+			pos += tag_len;
+			msg.getset_name = gs_name;
+			break;
+		case (tags.auth_str.value):
+			var gs_name = pkt.toString('ascii', pos, pos +
+				tag_len - 1);
+			pos += tag_len;
+			msg.getset_name = gs_name;
+			break;
 		default:
 			throw new Error('unknown tag type: ' + tag);
 		}
