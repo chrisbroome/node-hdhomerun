@@ -116,7 +116,8 @@ function decode_pkt(pkt, msg) {
 			msg.getset_name = gs_name;
 			break;
 		default:
-			throw new Error('unknown tag type: ' + tag);
+			console.log('unknown tag type: ' + tag)
+			//throw new Error('unknown tag type: ' + tag);
 		}
 	}
 
