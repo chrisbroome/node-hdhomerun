@@ -11,6 +11,10 @@ HDHOMERUN_TAG_GETSET_VALUE = 0x04
 HDHOMERUN_TAG_GETSET_LOCKKEY = 0x15
 HDHOMERUN_TAG_ERROR_MESSAGE = 0x05
 HDHOMERUN_TAG_TUNER_COUNT = 0x10
+HDHOMERUN_TAG_DEVICE_AUTH_BIN = 0x29
+HDHOMERUN_TAG_BASE_URL = 0x2A
+HDHOMERUN_TAG_DEVICE_AUTH_STR = 0x2B
+
 HDHOMERUN_DEVICE_TYPE_WILDCARD = 0xFFFFFFFF
 HDHOMERUN_DEVICE_TYPE_TUNER = 0x00000001
 HDHOMERUN_DEVICE_ID_WILDCARD = 0xFFFFFFFF
@@ -29,7 +33,10 @@ module.exports = {
 		getset_value: { value: HDHOMERUN_TAG_GETSET_VALUE, size: undefined },
 		getset_lockkey: { value: HDHOMERUN_TAG_GETSET_LOCKKEY, size: 4 },
 		error_message: { value: HDHOMERUN_TAG_ERROR_MESSAGE, size: undefined },
-		tuner_count: { value: HDHOMERUN_TAG_TUNER_COUNT, size: 1 }
+		tuner_count: { value: HDHOMERUN_TAG_TUNER_COUNT, size: 1 },
+		auth_bin: { value: HDHOMERUN_TAG_DEVICE_AUTH_BIN, size: undefined },
+		auth_str: { value: HDHOMERUN_TAG_DEVICE_AUTH_STR, size: undefined },
+		base_url: { value: HDHOMERUN_TAG_BASE_URL, size: undefined }
 	},
 	dev_values: {
 		device_type_tuner: HDHOMERUN_DEVICE_TYPE_TUNER,
