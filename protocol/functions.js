@@ -4,6 +4,7 @@ var assert = require('assert');
 
 module.exports = {
 	encode_msg: encode_msg,
+	encode_response: encode_response,
 	decode_pkt: decode_pkt
 };
 
