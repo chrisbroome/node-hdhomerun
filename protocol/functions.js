@@ -35,6 +35,30 @@ function encode_msg(msg) {
 	return (pkt);
 }
 
+function encode_response(msg) {
+
+	var pkt = new Buffer(proto.MAX_BUFSIZE);
+	var pos = 0;
+
+	// leave room for the length
+	pos += 2;
+
+	Object.keys(msg).forEach(function (field) {
+		pos = encode_tlv({ tag: field, value: msg[field] }, pkt, pos);
+	});
+
+	// trim buffer to size; leave room for checksum
+	pkt = pkt.slice(0, pos + 4);
+
+	// write packet size to header
+	pkt.writeUInt16BE(pkt.length - 8, 2);
+
+	var cksum = crc.unsigned(pkt.slice(0, pkt.length - 4));
+	pkt.writeUInt32LE(cksum, pkt.length - 4);
+
+	return (pkt);
+}
+
 
 function decode_pkt(pkt, msg) {
 	if (pkt.length < proto.HEADER_LEN)
