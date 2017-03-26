@@ -52,7 +52,7 @@ function encode_response(msg) {
 	pkt = pkt.slice(0, pos + 4);
 
 	// write packet size to header
-	pkt.writeUInt16BE(pkt.length - 8, 2);
+	pkt.writeUInt16BE(pkt.length - 8, 0);
 
 	var cksum = crc.unsigned(pkt.slice(0, pkt.length - 4));
 	pkt.writeUInt32LE(cksum, pkt.length - 4);
