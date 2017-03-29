@@ -40,6 +40,7 @@ function decode_pkt(pkt, msg) {
 		return (false);
 
 	var pos = msg._offset || 0;
+	msg.unkown_tags = new Array();
 
 	if (pos == 0) {
 		msg.type = pkt.readUInt16BE(pos); pos += 2;
@@ -115,6 +116,9 @@ function decode_pkt(pkt, msg) {
 			msg.getset_name = gs_name;
 			break;
 		default:
+			msg.unkown_tags[tag] = pkt.toString('ascii', pos, pos +
+					tag_len - 1);
+			pos += tag_len;
 			console.log('unknown tag type: ' + tag)
 			//throw new Error('unknown tag type: ' + tag);
 		}
