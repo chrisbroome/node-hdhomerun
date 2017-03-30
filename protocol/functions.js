@@ -116,6 +116,7 @@ function decode_pkt(pkt, msg) {
 			msg.getset_name = gs_name;
 			break;
 		default:
+			console.log(tag)
 			msg.unkown_tags[tag] = pkt.toString('ascii', pos, pos +
 					tag_len - 1);
 			pos += tag_len;
